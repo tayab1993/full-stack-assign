@@ -1,0 +1,94 @@
+<div class = "row">
+    <div class="col-md-12 ">
+        <h3 class="text-center">Signup</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <form (submit)="signup(signupForm)" #signupForm = ngForm>
+            <div class = "row ">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <span><i class="fas fa-envelope mr-1" aria-hidden="true"></i></span>
+                        <label for="exampleInputEmail">First name</label>
+                        <input type="text" class="form-control" id="exampleInputEmail" placeholder="Jack" name="firstName" required [(ngModel)]="firstName">
+                        <div *ngIf="firstNameErrors" class="invalid-feedback d-inline">
+                            Please enter first name
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class = "row ">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <span><i class="fas fa-envelope mr-1" aria-hidden="true"></i></span>
+                        <label for="exampleInputEmail">Last name</label>
+                        <input type="text" class="form-control" id="exampleInputEmail" placeholder="Bird" name="lastName" required [(ngModel)]="lastName">
+                        <div *ngIf="lastNameErrors" class="invalid-feedback d-inline">
+                            Please enter last name
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class = "row ">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <span><i class="fas fa-envelope mr-1" aria-hidden="true"></i></span>
+                        <label for="exampleInputEmail">Email address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail" placeholder="email@example.com" name="email" required [(ngModel)]="email" aria-describedby="emailHelp" #emailname="ngModel" pattern='^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$'>
+                        <div *ngIf="emailname.errors && email !== '' && button_status" class="invalid-feedback d-inline">
+                            Enter email in correct format like myemail@gmail.com.
+                        </div>
+                        <div *ngIf="emailLog" id="emailErrors" class="invalid-feedback d-inline">
+                            {{emailLog}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class = "row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <span><i class="fas fa-lock mr-1" aria-hidden="true"></i></span>
+                        <label for="exampleInputPassword">Password</label>
+                        <input type="password" #upass="ngModel" class="form-control" id="exampleInputPassword" name="password" required [(ngModel)]="password" maxlength="35" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d!#$&%'()*+,-.\:;<=>?@[\]^_`{|}~]{8,}$">
+                        <small class="form-text text-muted">8 or more characters with letters, numbers and symbols.</small>
+                        <div class="invalid-feedback d-inline" *ngIf="!password">
+                            {{passwordLog}}
+                        </div>
+                        <div *ngIf="upass.errors && password" class="invalid-feedback d-inline">
+                            Password must contain a minimum of 8 characters including a number and lower and upper case letter.
+                          </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <span><i class="fas fa-lock mr-1" aria-hidden="true"></i></span>
+                        <label>Confirm password</label>
+                        <div class = "show_pass"><i toggle="#conff_pwd" class="" aria-hidden="true"></i></div>
+                        <input type="password" class="form-control" id="conff_pwd" required name="confirmPassword" [(ngModel)]="confirmPassword">
+                        <div *ngIf="passwordErrors" class="invalid-feedback d-inline">{{passwordErrors}}</div>
+                      </div>
+                </div>
+            </div>
+            <div class="row" *ngIf="errorMsg">
+                <div class="col-md-12">
+                    <span class="errorMessage"> {{errorMsg}} </span>
+                </div>
+            </div>
+            <div class = "row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <input type="submit" class="form-control btn btn-secondary" value = "Signup" [disabled]="!signupForm.valid ">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    or <a routerLink="/login">Login</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

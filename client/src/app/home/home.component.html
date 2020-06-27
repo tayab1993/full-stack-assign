@@ -1,0 +1,29 @@
+<div class="up-buttons">
+  <button (click)="gotoAdd()">Add a coupon</button>
+  <button (click)="logout()" id="logout-style">Logout</button>
+</div>
+<table>
+    <thead>
+      <tr>
+        <th>Coupon ID</th>
+        <th>Coupon name</th>
+        <th>Duration</th>
+        <th>Duration months</th>
+        <th>Percent off</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let coupon of couponsData">
+            <td>{{coupon.id}}</td>
+            <td>{{coupon.name}}</td>
+            <td>{{coupon.duration}}</td>
+            <td>{{coupon.duration_in_months}}</td>
+            <td>{{coupon.percent_off}}</td>
+            <td><button (click)="delete(coupon.id)">Delete</button></td>
+        </tr>
+    </tbody>
+  </table>
+  <div class="bottom-buttons">
+    <button (click)="gotoAdd()">Add a coupon</button>
+  </div>
